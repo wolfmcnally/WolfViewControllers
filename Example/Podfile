@@ -1,0 +1,11 @@
+use_frameworks!
+
+platform :ios, '12.0'
+
+target 'WolfViewControllers_Example' do
+  pod 'WolfViewControllers', :path => '../'
+
+  target 'WolfViewControllers_Tests' do
+    inherit! :search_paths
+  end
+end
