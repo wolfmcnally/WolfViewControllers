@@ -169,6 +169,8 @@ extension UIViewController {
         switch errorType {
         case let error as DescriptiveError:
             presentAlert(forError: error, withMessage: error.message, identifier: error.identifier, didAppear: didAppear, didDisappear: didDisappear)
+        case let error as MessageError:
+            presentAlert(forError: error, withMessage: error.message, didAppear: didAppear, didDisappear: didDisappear)
         case let error as LocalizedError:
             presentAlert(forError: error, withMessage: error.localizedDescription, didAppear: didAppear, didDisappear: didDisappear)
         default:
