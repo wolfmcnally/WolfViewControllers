@@ -29,6 +29,39 @@ import WolfConcurrency
 import WolfViews
 import WolfFoundation
 
+public struct PopoverSource {
+    let position: Position
+    let permittedArrowDirections: UIPopoverArrowDirection
+
+    init(position: Position, permittedArrowDirections: UIPopoverArrowDirection = .any) {
+        self.position = position
+        self.permittedArrowDirections = permittedArrowDirections
+    }
+
+    public init(view: UIView, rect: CGRect, permittedArrowDirections: UIPopoverArrowDirection = .any) {
+        self.init(position: .view(.init(view: view, rect: rect)), permittedArrowDirections: permittedArrowDirections)
+    }
+
+    public init(barButtonItem: UIBarButtonItem, permittedArrowDirections: UIPopoverArrowDirection = .any) {
+        self.init(position: .barButtonItem(barButtonItem), permittedArrowDirections: permittedArrowDirections)
+    }
+
+    public enum Position {
+        case view(ViewRect)
+        case barButtonItem(UIBarButtonItem)
+    }
+
+    public struct ViewRect {
+        public let view: UIView
+        public let rect: CGRect
+
+        public init(view: UIView, rect: CGRect) {
+            self.view = view
+            self.rect = rect
+        }
+    }
+}
+
 extension UIViewController {
     public func presentModal(from presentingViewController: UIViewController) -> Self {
         let navigationController = NavigationController(rootViewController: self)
@@ -105,21 +138,19 @@ extension UIViewController {
         }
     }
 
-    private func presentAlertController(withPreferredStyle style: UIAlertController.Style, title: String?, message: String?, identifier: String? = nil, popoverSourceView: UIView? = nil, popoverSourceRect: CGRect? = nil, popoverBarButtonItem: UIBarButtonItem? = nil, popoverPermittedArrowDirections: UIPopoverArrowDirection = .any, actions: [AlertAction], didAppear: Block?, didDisappear: Block?) {
+    private func presentAlertController(withPreferredStyle style: UIAlertController.Style, title: String?, message: String?, identifier: String? = nil, popoverSource: PopoverSource? = nil, actions: [AlertAction], didAppear: Block?, didDisappear: Block?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
-        if popoverSourceView != nil || popoverSourceRect != nil || popoverBarButtonItem != nil {
-            if let popover = alert.popoverPresentationController {
-                if let popoverSourceView = popoverSourceView {
-                    popover.sourceView = popoverSourceView
-                    if let popoverSourceRect = popoverSourceRect {
-                        popover.sourceRect = popoverSourceRect
-                    } else {
-                        popover.sourceRect = popoverSourceView.bounds
-                    }
-                } else if let popoverBarButtonItem = popoverBarButtonItem {
-                    popover.barButtonItem = popoverBarButtonItem
-                }
-                popover.permittedArrowDirections = popoverPermittedArrowDirections
+        if let popover = alert.popoverPresentationController {
+            guard let popoverSource = popoverSource else {
+                fatalError("PopoverSpec must be provided.")
+            }
+            popover.permittedArrowDirections = popoverSource.permittedArrowDirections
+            switch popoverSource.position {
+            case .view(let sourceView):
+                popover.sourceView = sourceView.view
+                popover.sourceRect = sourceView.rect
+            case .barButtonItem(let barButtonItem):
+                popover.barButtonItem = barButtonItem
             }
         }
         var buttonIdentifiers = [String?]()
@@ -143,8 +174,8 @@ extension UIViewController {
         presentAlertController(withPreferredStyle: .alert, title: nil, message: message, identifier: identifier, actions: actions, didAppear: didAppear, didDisappear: didDisappear)
     }
 
-    public func presentSheet(withTitle title: String? = nil, message: String? = nil, identifier: String? = nil, popoverSourceView: UIView? = nil, popoverSourceRect: CGRect? = nil, popoverBarButtonItem: UIBarButtonItem? = nil, popoverPermittedArrowDirections: UIPopoverArrowDirection = .any, actions: [AlertAction], didAppear: Block? = nil, didDisappear: Block? = nil) {
-        presentAlertController(withPreferredStyle: .actionSheet, title: title, message: message, identifier: identifier, popoverSourceView: popoverSourceView, popoverSourceRect: popoverSourceRect, popoverBarButtonItem: popoverBarButtonItem, popoverPermittedArrowDirections: popoverPermittedArrowDirections, actions: actions, didAppear: didAppear, didDisappear: didDisappear)
+    public func presentSheet(withTitle title: String? = nil, message: String? = nil, identifier: String? = nil, popoverSource: PopoverSource? = nil, actions: [AlertAction], didAppear: Block? = nil, didDisappear: Block? = nil) {
+        presentAlertController(withPreferredStyle: .actionSheet, title: title, message: message, identifier: identifier, popoverSource: popoverSource, actions: actions, didAppear: didAppear, didDisappear: didDisappear)
     }
 
     public func presentOKAlert(withTitle title: String, message: String, identifier: String? = nil, didAppear: Block? = nil, didDisappear: Block? = nil) {
