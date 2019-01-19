@@ -239,4 +239,17 @@ extension UIViewController {
 
         return front
     }
+
+    public func pushViewController(_ vc: UIViewController) {
+        navigationController!.pushViewController(vc, animated: true)
+    }
+
+    public func pushViewController(_ vc: UIViewController, backItem: UIBarButtonItem) {
+        navigationItem.backBarButtonItem = backItem
+        pushViewController(vc)
+    }
+
+    public func pushViewController(_ vc: UIViewController, backSystemItem: UIBarButtonItem.SystemItem) {
+        pushViewController(vc, backItem: UIBarButtonItem(barButtonSystemItem: backSystemItem))
+    }
 }
