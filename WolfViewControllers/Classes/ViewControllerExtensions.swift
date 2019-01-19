@@ -244,6 +244,7 @@ extension UIViewController {
         navigationController!.pushViewController(vc, animated: true)
     }
 
+    #if !os(tvOS)
     public func pushViewController(_ vc: UIViewController, backItem: UIBarButtonItem) {
         navigationItem.backBarButtonItem = backItem
         pushViewController(vc)
@@ -252,4 +253,5 @@ extension UIViewController {
     public func pushViewController(_ vc: UIViewController, backSystemItem: UIBarButtonItem.SystemItem) {
         pushViewController(vc, backItem: UIBarButtonItem(barButtonSystemItem: backSystemItem))
     }
+    #endif
 }
