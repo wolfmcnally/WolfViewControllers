@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'WolfViewControllers'
-    s.version          = '2.1.1'
+    s.version          = '3.0.0'
     s.summary          = 'Direct subclasses of iOS view controllers implementing useful patterns.'
 
     s.homepage         = 'https://github.com/wolfmcnally/WolfViewControllers'
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.author           = { 'Wolf McNally' => 'wolf@wolfmcnally.com' }
     s.source           = { :git => 'https://github.com/wolfmcnally/WolfViewControllers.git', :tag => s.version.to_s }
 
-    s.swift_version = '4.2'
+    s.swift_version = '5.0'
 
     s.source_files = 'WolfViewControllers/Classes/**/*'
 
