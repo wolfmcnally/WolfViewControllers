@@ -79,7 +79,7 @@ PODS:
     - WolfOSBridge
     - WolfPipe
     - WolfWith
-  - WolfViewControllers (3.0.0):
+  - WolfViewControllers (3.0.1):
     - WolfConcurrency
     - WolfFoundation
     - WolfLocale
@@ -87,7 +87,7 @@ PODS:
     - WolfNesting
     - WolfStrings
     - WolfViews
-  - WolfViews (2.0.0):
+  - WolfViews (2.1.1):
     - WolfAnimation
     - WolfApp
     - WolfAutolayout
@@ -157,8 +157,8 @@ SPEC CHECKSUMS:
   WolfPubSub: 14a07db9480028525d113ace211532fbdca25600
   WolfSec: ca7fe7e83a15f4f140fc5b3312ce2e96c0bfd8d3
   WolfStrings: edc63c08fbd1149ccbf5eca5020b13465084513b
-  WolfViewControllers: 3fb3d0a795c5f1fcea574debee21d661dcb475b3
-  WolfViews: 90b7c1371bcfed2145167fcb0f6f62357c285c6d
+  WolfViewControllers: 27ef10dde90432e008c4f6cb42413e3b0ee62471
+  WolfViews: b3138f4b4e24b992671325ea8c5231869d0ed9bb
   WolfWith: 2320a88a03a943df9ff1284c9cca10f86cb73c60
 
 PODFILE CHECKSUM: e57bd7712f36557ba32e1ca3ef5110e1f79481d7
