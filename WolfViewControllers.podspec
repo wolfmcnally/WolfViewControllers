@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'WolfViewControllers'
-    s.version          = '4.0.0'
+    s.version          = '4.0.1'
     s.summary          = 'Direct subclasses of iOS view controllers implementing useful patterns.'
 
     s.homepage         = 'https://github.com/wolfmcnally/WolfViewControllers'
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
     s.swift_version = '5.0'
 
-    s.source_files = 'WolfViewControllers/Classes/**/*'
+    s.source_files = 'Sources/WolfViewControllers/**/*'
 
     s.ios.deployment_target = '12.0'
     s.tvos.deployment_target = '12.0'
@@ -18,10 +18,7 @@ Pod::Spec.new do |s|
     s.module_name = 'WolfViewControllers'
 
     s.dependency 'WolfLog'
-    s.dependency 'WolfNesting'
-    s.dependency 'WolfStrings'
+    s.dependency 'WolfCore'
     s.dependency 'WolfLocale'
-    s.dependency 'WolfConcurrency'
-    s.dependency 'WolfFoundation'
     s.dependency 'WolfViews'
 end

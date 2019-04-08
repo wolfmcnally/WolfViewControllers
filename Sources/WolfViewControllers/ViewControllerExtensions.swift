@@ -25,9 +25,8 @@
 import UIKit
 import WolfLog
 import WolfLocale
-import WolfConcurrency
+import WolfCore
 import WolfViews
-import WolfFoundation
 
 public struct PopoverSource {
     let position: Position

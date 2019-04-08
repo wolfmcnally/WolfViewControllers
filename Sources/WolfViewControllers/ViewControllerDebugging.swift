@@ -23,7 +23,7 @@
 //  SOFTWARE.
 
 import UIKit
-import WolfStrings
+import WolfCore
 
 extension UIViewController {
     public func printControllerHierarchy() {

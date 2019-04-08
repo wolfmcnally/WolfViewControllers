@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  TabBarController.swift
 //  WolfViewControllers
 //
-//  Created by Wolf McNally on 09/15/2018.
+//  Created by Wolf McNally on 6/8/16.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,38 @@
 //  SOFTWARE.
 
 import UIKit
+import WolfLog
+import WolfCore
 
-class ViewController: UIViewController {
+open class TabBarController: UITabBarController {
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        _setup()
+    }
+
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        _setup()
+    }
+
+    private func _setup() {
+        logInfo("init \(self)", group: .viewControllerLifecycle)
+        setup()
+    }
+
+    deinit {
+        logInfo("deinit \(self)", group: .viewControllerLifecycle)
+    }
+
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        logInfo("awakeFromNib \(self)", group: .viewControllerLifecycle)
+    }
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        view.debugIdentifier = "\(typeName(of: self)).view"
+    }
+
+    open func setup() { }
 }
