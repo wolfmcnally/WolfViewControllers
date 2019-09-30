@@ -22,6 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+#if canImport(UIKit)
 import UIKit
 import WolfCore
 
@@ -104,3 +105,4 @@ extension UIViewController {
 public func printRootControllerHierarchy() {
     UIApplication.shared.windows[0].rootViewController?.printControllerHierarchy()
 }
+#endif

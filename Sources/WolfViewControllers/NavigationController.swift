@@ -22,6 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+#if canImport(UIKit)
 import UIKit
 import WolfLog
 import WolfViews
@@ -81,3 +82,4 @@ open class NavigationController: UINavigationController, UINavigationControllerD
         onDidShow?(navigationController, animated)
     }
 }
+#endif
