@@ -25,7 +25,7 @@
 #if canImport(UIKit)
 import UIKit
 import WolfLog
-import WolfCore
+import WolfFoundation
 
 open class TabBarController: UITabBarController {
     public required init?(coder aDecoder: NSCoder) {

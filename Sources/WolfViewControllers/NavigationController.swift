@@ -26,7 +26,7 @@
 import UIKit
 import WolfLog
 import WolfViews
-import WolfCore
+import WolfFoundation
 
 open class NavigationController: UINavigationController, UINavigationControllerDelegate {
     public var onWillShow: ((_ viewController: UIViewController, _ animated: Bool) -> Void)?

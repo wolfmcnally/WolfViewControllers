@@ -24,9 +24,11 @@
 
 #if canImport(UIKit)
 import UIKit
-import WolfCore
 import WolfLog
 import WolfViews
+import WolfNesting
+import WolfConcurrency
+import WolfFoundation
 
 public typealias ViewControllerBlock = (UIViewController) -> Void
 

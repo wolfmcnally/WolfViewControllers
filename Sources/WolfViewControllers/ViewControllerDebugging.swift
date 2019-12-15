@@ -24,7 +24,7 @@
 
 #if canImport(UIKit)
 import UIKit
-import WolfCore
+import WolfStrings
 
 extension UIViewController {
     public func printControllerHierarchy() {
